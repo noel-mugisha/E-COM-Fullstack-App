@@ -80,4 +80,11 @@ public class ProductController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product not found");
     }
 
+    // EndPoint for a search feature
+    @GetMapping("/products/search")
+    public ResponseEntity<List<Product>> searchProducts (@RequestParam String keyword) {
+        List<Product> products = productService.searchProducts(keyword);
+        return ResponseEntity.ok(products);
+    }
+
 }
